@@ -94,13 +94,15 @@ https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-CryptLib-Add-the-Asc
 What OS and toolchain must we use to reproduce this build?  Include where to find it, etc.  We're going to try to reproduce your build as close as possible to verify that it's really a build of the source tree you tell us it is, so these need to be fairly thorough. At the very least include the specific versions of gcc, binutils, and gnu-efi which were used, and where to find those binaries.
 -------------------------------------------------------------------------------
 1. OS: ROSA Fresh R10 with all updates from the official repositories
-```
+
+
 Installation ISO image for x86_64 builds:
+
 http://mirror.rosalab.ru/rosa/rosa2016.1/iso/ROSA.Fresh.R10/ROSA.FRESH.KDE.R10.x86_64.uefi.iso
+
 MD5: 9bb7221aa9d849258e9cda5a3edde5c1
 
 You can install the OS in a VM (VirtualBox or QEMU) using its graphical installer, the same way as Fedora or Ubuntu.
-```
 
 2. After installation, make sure the network connection is working in the installed OS and run 'urpmi --auto-update' as root there. This will perform software update and may take a while depending on how fast the network is (up to 2-3 hours in our experiments).
 
