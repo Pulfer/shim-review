@@ -73,66 +73,65 @@ https://abf.io/signer/shim-unsigned
 What patches are being applied and why:
 -------------------------------------------------------------------------------
 * (From shim v14+)\
-https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-MokManager-Stop-using-EFI_VARIABLE_APPEND_WRITE.patch\
-Important bug fix, affects HP laptops: https://github.com/rhboot/shim/issues/105\
+https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-MokManager-Stop-using-EFI_VARIABLE_APPEND_WRITE.patch \
+Important bug fix, affects HP laptops: https://github.com/rhboot/shim/issues/105 \
 
 * (From Ubuntu 18.04)\
-https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-define-abort-to-avoid-an-unnecessary-reloc.patch\
+https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-define-abort-to-avoid-an-unnecessary-reloc.patch \
 Build fix.\
 
 * (2 more upstream patches, build fixes)\
-https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-Cryptlib-replace-CryptPem-with-CryptPemNull.patch\
-https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-CryptLib-Add-the-AsciiStrCpy-decl.patch\
+https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-Cryptlib-replace-CryptPem-with-CryptPemNull.patch \
+https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-CryptLib-Add-the-AsciiStrCpy-decl.patch \
 
 -------------------------------------------------------------------------------
 What OS and toolchain must we use to reproduce this build?  Include where to find it, etc.  We're going to try to reproduce your build as close as possible to verify that it's really a build of the source tree you tell us it is, so these need to be fairly thorough. At the very least include the specific versions of gcc, binutils, and gnu-efi which were used, and where to find those binaries.
 -------------------------------------------------------------------------------
 1. OS: ROSA Fresh R10 with all updates from the official repositories\
 Installation ISO image for x86_64 builds:\
-http://mirror.rosalab.ru/rosa/rosa2016.1/iso/ROSA.Fresh.R10/ROSA.FRESH.KDE.R10.x86_64.uefi.iso\
+http://mirror.rosalab.ru/rosa/rosa2016.1/iso/ROSA.Fresh.R10/ROSA.FRESH.KDE.R10.x86_64.uefi.iso \
 MD5: 9bb7221aa9d849258e9cda5a3edde5c1\
 \
 You can install the OS in a VM (VirtualBox or QEMU) using its graphical installer, the same way as Fedora or Ubuntu.
 
 2. After installation, make sure the network connection is working in the installed OS and run 'urpmi --auto-update' as root there. This will perform software update and may take a while depending on how fast the network is (up to 2-3 hours in our experiments).
 
-3. Install build requirements:
-urpmi rpm-build git gnu-efi 'pkgconfig(libelf)' openssl 'pkgconfig(openssl)' pesign
-
+3. Install build requirements:\
+urpmi rpm-build git gnu-efi 'pkgconfig(libelf)' openssl 'pkgconfig(openssl)' pesign\
 (single quotes around pkgconfig() are essential)
 
 No need to install GCC and binutils separately, these will be already installed by this time.
 
-For the record, here are the versions of the components you mentioned:
-GCC:        5.5.0_2017.10 (Linaro)
-binutils:   2.26.1
-gnu-efi:    3.0.8
+For the record, here are the versions of the components you mentioned:\
+GCC:        5.5.0_2017.10 (Linaro)\
+binutils:   2.26.1\
+gnu-efi:    3.0.8\
 
-4. Create the build directories:
-$ mkdir -p ~/rpmbuild
-$ cd ~/rpmbuild/
-$ mkdir -p SOURCES SPECS BUILD BUILDROOT SRPMS RPMS/{noarch,i586,x86_64}
+4. Create the build directories:\
+$ mkdir -p ~/rpmbuild\
+$ cd ~/rpmbuild/\
+$ mkdir -p SOURCES SPECS BUILD BUILDROOT SRPMS RPMS/{noarch,i586,x86_64}\
 
-5. Get the sources, patches and the RPM spec file:
-$ git clone https://abf.io/signer/shim-unsigned.git -b rosa2016.1
-$ cd shim-unsigned
-$ cp *.cer *.patch *.rpmlintrc ~/rpmbuild/SOURCES/
-$ cp shim-unsigned.spec ~/rpmbuild/SPECS/
-$ cd ~/rpmbuild/SOURCES/
-$ wget https://github.com/rhboot/shim/releases/download/13/shim-13.tar.bz2
-
-Prepare the source tree in case you want to inspect it:
-$ cd ~/rpmbuild/SPECS/
-$ rpmbuild -bp shim-unsigned.spec
-
-This will unpack the source tarball and apply the patches mentioned above.
-The source tree will be in ~/rpmbuild/BUILD/shim-13/.
-
-Now you can either use 'rpmbuild -bb shim-unsigned.spec' to build shim binary or do it manually:
-$ cd ~/rpmbuild/BUILD/shim-13
-$ make 'DEFAULT_LOADER=\\\\grubx64.efi' VENDOR_CERT_FILE="${HOME}/rpmbuild/SOURCES/rosa.cer" EFIDIR=rosa all
-
-shimx64.efi should be build on x86_64
+5. Get the sources, patches and the RPM spec file:\
+$ git clone https://abf.io/signer/shim-unsigned.git -b rosa2016.1\
+$ cd shim-unsigned\
+$ cp *.cer *.patch *.rpmlintrc ~/rpmbuild/SOURCES/\
+$ cp shim-unsigned.spec ~/rpmbuild/SPECS/\
+$ cd ~/rpmbuild/SOURCES/\
+$ wget https://github.com/rhboot/shim/releases/download/13/shim-13.tar.bz2 \
+\
+Prepare the source tree in case you want to inspect it:\
+$ cd ~/rpmbuild/SPECS/\
+$ rpmbuild -bp shim-unsigned.spec\
+\
+This will unpack the source tarball and apply the patches mentioned above.\
+The source tree will be in ~/rpmbuild/BUILD/shim-13/.\
+\
+Now you can either use 'rpmbuild -bb shim-unsigned.spec' to build shim binary or do it manually:\
+$ cd ~/rpmbuild/BUILD/shim-13\
+$ make 'DEFAULT_LOADER=\\\\grubx64.efi' VENDOR_CERT_FILE="${HOME}/rpmbuild/SOURCES/rosa.cer" EFIDIR=rosa all\
+\
+shimx64.efi should be build on x86_64\
 
 -------------------------------------------------------------------------------
 Which files in this repo are the logs for your build?   This should include logs for creating the buildroots, applying patches, doing the build, creating the archives, etc.
