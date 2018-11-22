@@ -18,17 +18,17 @@ Here's the template:
 -------------------------------------------------------------------------------
 What organization or people are asking to have this signed:
 -------------------------------------------------------------------------------
-[LLC "NTC IT ROSA"]
+LLC "NTC IT ROSA"
 
 -------------------------------------------------------------------------------
 What product or service is this for:
 -------------------------------------------------------------------------------
-["ROSA Fresh" - Linux Desktop]
+"ROSA Fresh" - Linux Desktop
 
 -------------------------------------------------------------------------------
 What's the justification that this really does need to be signed for the whole world to be able to boot it:
 -------------------------------------------------------------------------------
-["ROSA Fresh" is a non-profit Linux distribution developed by the community and has a long history]
+"ROSA Fresh" is a non-profit Linux distribution developed by the community and has a long history
 
 -------------------------------------------------------------------------------
 Who is the primary contact for security updates, etc.
@@ -47,12 +47,12 @@ Who is the secondary contact for security updates, etc.
 -------------------------------------------------------------------------------
 What upstream shim tag is this starting from:
 -------------------------------------------------------------------------------
-[https://github.com/rhboot/shim/tree/13]
+https://github.com/rhboot/shim/tree/13
 
 -------------------------------------------------------------------------------
 URL for a repo that contains the exact code which was built to get this binary:
 -------------------------------------------------------------------------------
-[The source code used to build shim is not stored in a repo but rather prepared at build time as follows:
+The source code used to build shim is not stored in a repo but rather prepared at build time as follows:
 
 ** Get and unpack https://github.com/rhboot/shim/releases/download/13/shim-13.tar.bz2
 ** Apply the following patches:
@@ -67,12 +67,12 @@ Patch2:        shim-13-Cryptlib-replace-CryptPem-with-CryptPemNull.patch
 Patch3:        shim-13-CryptLib-Add-the-AsciiStrCpy-decl.patch
 
 The patches and the build instructions (RPM spec file) are here:
-https://abf.io/signer/shim-unsigned]
+https://abf.io/signer/shim-unsigned
 
 -------------------------------------------------------------------------------
 What patches are being applied and why:
 -------------------------------------------------------------------------------
-[** (From shim v14+)
+** (From shim v14+)
 https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-MokManager-Stop-using-EFI_VARIABLE_APPEND_WRITE.patch
 Important bug fix, affects HP laptops: https://github.com/rhboot/shim/issues/105
 
@@ -82,12 +82,12 @@ Build fix.
 
 ** (2 more upstream patches, build fixes)
 https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-Cryptlib-replace-CryptPem-with-CryptPemNull.patch
-https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-CryptLib-Add-the-AsciiStrCpy-decl.patch]
+https://abf.io/signer/shim-unsigned/blob/rosa2016.1/shim-13-CryptLib-Add-the-AsciiStrCpy-decl.patch
 
 -------------------------------------------------------------------------------
 What OS and toolchain must we use to reproduce this build?  Include where to find it, etc.  We're going to try to reproduce your build as close as possible to verify that it's really a build of the source tree you tell us it is, so these need to be fairly thorough. At the very least include the specific versions of gcc, binutils, and gnu-efi which were used, and where to find those binaries.
 -------------------------------------------------------------------------------
-[1. OS: ROSA Fresh R10 with all updates from the official repositories
+1. OS: ROSA Fresh R10 with all updates from the official repositories
 
 Installation ISO image for x86_64 builds:
 http://mirror.rosalab.ru/rosa/rosa2016.1/iso/ROSA.Fresh.R10/ROSA.FRESH.KDE.R10.x86_64.uefi.iso
@@ -133,17 +133,17 @@ Now you can either use 'rpmbuild -bb shim-unsigned.spec' to build shim binary or
 $ cd ~/rpmbuild/BUILD/shim-13
 $ make 'DEFAULT_LOADER=\\\\grubx64.efi' VENDOR_CERT_FILE="${HOME}/rpmbuild/SOURCES/rosa.cer" EFIDIR=rosa all
 
-shimx64.efi should be build on x86_64]
+shimx64.efi should be build on x86_64
 
 -------------------------------------------------------------------------------
 Which files in this repo are the logs for your build?   This should include logs for creating the buildroots, applying patches, doing the build, creating the archives, etc.
 -------------------------------------------------------------------------------
-[x86_64:
+x86_64:
 Build log: http://file-store.rosalinux.ru/api/v1/file_stores/53ae6fbef5c6a3b05d8e785d5477ff5d75e0aa65.log?show=true
-Build info: https://abf.io/build_lists/2953105]
+Build info: https://abf.io/build_lists/2953105
 
 -------------------------------------------------------------------------------
 Patches to GRUB
 -------------------------------------------------------------------------------
-[In case we need to provide the extra patches to grub we use, they are available here along with the build instructions (RPM spec file), etc.:
-https://abf.io/import/grub2]
+In case we need to provide the extra patches to grub we use, they are available here along with the build instructions (RPM spec file), etc.:
+https://abf.io/import/grub2
