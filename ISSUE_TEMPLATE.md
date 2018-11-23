@@ -45,19 +45,21 @@ Make sure you have provided the following information:
 `Our patches, configs and build instructions for the kernel (RPM spec file) are available here: https://abf.io/import/kernel-desktop-4.15 `
 
 ###### What changes were made since your SHIM was last signed?
-`This is an update from v0.9 to v13. From the changelog:`
-`* MokManager: Stop using EFI_VARIABLE_APPEND_WRITE`
-`* Better PCR usage for TPM`
-`* Use authenticode signature length from WIN_CERTIFICATE structure`
-`* More configurable build via make variables`
-`* Workaround for signtool.exe bugs`
-`* Bug fix for wrong options passed to second stage`
-`* generate_hash(): fix the regression`
-`* Ignore BDS when it tells us we got our own path on the command line`
-`* Handle various different load option implementation differences`
-`* TPM 1 and TPM 2 support`
-`* Use OpenSSL 1.0.2k`
-`* Lots of minor bug fixes`
+```
+This is an update from v0.9 to v13. From the changelog:
+* MokManager: Stop using EFI_VARIABLE_APPEND_WRITE
+* Better PCR usage for TPM
+* Use authenticode signature length from WIN_CERTIFICATE structure
+* More configurable build via make variables
+* Workaround for signtool.exe bugs
+* Bug fix for wrong options passed to second stage
+* generate_hash(): fix the regression
+* Ignore BDS when it tells us we got our own path on the command line
+* Handle various different load option implementation differences
+* TPM 1 and TPM 2 support`
+* Use OpenSSL 1.0.2k
+* Lots of minor bug fixes
+```
 
 ###### What is the hash of your final SHIM binary?
 `sha256: cc3c8a1e6c3f2098b431c1c539d454b3be98a71744b0bae209d95b67af1b9767  shimx64.efi`
