@@ -40,10 +40,9 @@ Make sure you have provided the following information:
 `Shim launches GRUB`
 
 ###### What kernel are you using? Which patches does it includes to enforce Secure Boot?
-`Our current kernel is based on the kernel 4.15.0-40.43-generic from Ubuntu 18.04 LTS (http://kernel.ubuntu.com/git/kernel-ppa/mirror/ubuntu-bionic.git/), which already contains the patches to enforce SecureBoot as needed. We have no additional SecureBoot-related patches on top of that.
+`Our current kernel is based on the kernel 4.15.0-40.43-generic from Ubuntu 18.04 LTS (http://kernel.ubuntu.com/git/kernel-ppa/mirror/ubuntu-bionic.git/), which already contains the patches to enforce SecureBoot as needed. We have no additional SecureBoot-related patches on top of that.`
 
-Our patches, configs and build instructions for the kernel (RPM spec file) are available here: https://abf.io/import/kernel-desktop-4.15
-`
+`Our patches, configs and build instructions for the kernel (RPM spec file) are available here: https://abf.io/import/kernel-desktop-4.15 `
 
 ###### What changes were made since your SHIM was last signed?
 `This is an update from v0.9 to v13. From the changelog:
