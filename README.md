@@ -18,31 +18,42 @@ Here's the template:
 -------------------------------------------------------------------------------
 What organization or people are asking to have this signed:
 -------------------------------------------------------------------------------
+``` no-highlight
 LLC "NTC IT ROSA"
+```
 
 -------------------------------------------------------------------------------
 What product or service is this for:
 -------------------------------------------------------------------------------
+``` no-highlight
 "ROSA Fresh" - Linux Desktop
+```
 
 -------------------------------------------------------------------------------
 What's the justification that this really does need to be signed for the whole world to be able to boot it:
 -------------------------------------------------------------------------------
-"ROSA Fresh" is a non-profit Linux distribution developed by the community and has a long history
+``` no-highlight
+"ROSA Fresh" is a non-profit Linux distribution developed by the community
+and has a long history
+```
 
 -------------------------------------------------------------------------------
 Who is the primary contact for security updates, etc.
 -------------------------------------------------------------------------------
+``` no-highlight
 - Name: Gaidukov Andrew
 - Position: CTO
 - Email address: a.gaidukov@rosalinux.ru
+```
 
 -------------------------------------------------------------------------------
 Who is the secondary contact for security updates, etc.
 -------------------------------------------------------------------------------
+``` no-highlight
 - Name: Vladimir Potapov
 - Position: Developer
 - Email address: vladimir.potapov@rosalab.ru
+```
 
 -------------------------------------------------------------------------------
 What upstream shim tag is this starting from:
@@ -53,7 +64,8 @@ https://github.com/rhboot/shim/tree/13
 URL for a repo that contains the exact code which was built to get this binary:
 -------------------------------------------------------------------------------
 ``` no-highlight
-The source code used to build shim is not stored in a repo but rather prepared at build time as follows:
+The source code used to build shim is not stored in a repo but rather prepared
+at build time as follows:
 
 1. Get and unpack https://github.com/rhboot/shim/releases/download/13/shim-13.tar.bz2
 2. Apply the following patches:
@@ -97,9 +109,12 @@ Installation ISO image for x86_64 builds:
 http://mirror.rosalab.ru/rosa/rosa2016.1/iso/ROSA.Fresh.R10/ROSA.FRESH.KDE.R10.x86_64.uefi.iso
 MD5: 9bb7221aa9d849258e9cda5a3edde5c1
 
-You can install the OS in a VM (VirtualBox or QEMU) using its graphical installer, the same way as Fedora or Ubuntu.
+You can install the OS in a VM (VirtualBox or QEMU) using its graphical installer,
+the same way as Fedora or Ubuntu.
 
-2. After installation, make sure the network connection is working in the installed OS and run 'urpmi --auto-update' as root there. This will perform software update and may take a while depending on how fast the network is (up to 2-3 hours in our experiments).
+2. After installation, make sure the network connection is working in the installed OS
+and run 'urpmi --auto-update' as root there. This will perform software update and may
+take a while depending on how fast the network is (up to 2-3 hours in our experiments).
 
 3. Install build requirements:
 urpmi rpm-build git gnu-efi 'pkgconfig(libelf)' openssl 'pkgconfig(openssl)' pesign
@@ -152,6 +167,7 @@ Build info: https://abf.io/build_lists/2953105
 Patches to GRUB
 -------------------------------------------------------------------------------
 ``` no-highlight
-In case we need to provide the extra patches to grub we use, they are available here along with the build instructions (RPM spec file), etc.:
+In case we need to provide the extra patches to grub we use, they are available
+here along with the build instructions (RPM spec file), etc.:
 https://abf.io/import/grub2
 ```
